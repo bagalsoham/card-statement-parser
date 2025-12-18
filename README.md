@@ -322,7 +322,7 @@ Perfect for testing and batch processing.
 
 ```bash
 cd backend
-python test_example.py path/to/statement.pdf
+python test_example.py ../path/to/statement.pdf
 ```
 
 #### Example Output
@@ -593,7 +593,8 @@ credit-card-parser/
 │   │   │   ├── icici_parser.py       # ICICI-specific logic
 │   │   │   ├── sbi_parser.py         # SBI-specific logic
 │   │   │   ├── axis_parser.py        # Axis-specific logic
-│   │   │   └── amex_parser.py        # Amex-specific logic
+│   │   │   ├── amex_parser.py        # Amex-specific logic
+│   │   │   └── __pycache__/          # Cache directory
 │   │   │
 │   │   ├── __init__.py
 │   │   ├── config.py                 # Configuration management
@@ -601,39 +602,57 @@ credit-card-parser/
 │   │   ├── pdf_loader.py             # PDF extraction logic
 │   │   ├── issuer_detector.py        # Bank detection
 │   │   ├── llm_extractor.py          # Gemini API integration
-│   │   └── validators.py             # Field validation
+│   │   ├── validators.py             # Field validation
+│   │   └── __pycache__/              # Cache directory
 │   │
 │   ├── tests/
 │   │   ├── __init__.py
 │   │   ├── conftest.py               # Pytest configuration
 │   │   ├── mock_statements.py        # Test data generator
-│   │   └── test_*.py                 # Test files
+│   │   ├── test_issuer_detector.py   # Issuer detection tests
+│   │   └── __pycache__/              # Cache directory
 │   │
 │   ├── main.py                       # FastAPI application
+│   ├── run_all_tests.py              # Comprehensive test suite
 │   ├── test_example.py               # CLI interface
+│   ├── test_llm.py                   # LLM integration tests
 │   ├── requirements.txt              # Python dependencies
-│   ├── .env                          # Environment variables
-│   └── README.md                     # Backend documentation
+│   ├── .env                          # Environment variables (not in repo)
+│   ├── .gitignore                    # Git ignore rules
+│   ├── .pytest_cache/                # Pytest cache
+│   ├── .vscode/                      # VS Code settings
+│   └── __pycache__/                  # Cache directory
 │
 ├── frontend/
 │   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── App.js                    # Main React component
-│   │   └── index.js                  # Entry point
+│   │   ├── index.html                # HTML template
+│   │   ├── manifest.json             # PWA manifest
+│   │   └── robots.txt                # SEO robots
 │   │
-│   ├── package.json                  # Node dependencies
+│   ├── src/
+│   │   ├── App.jsx                   # Main React component
+│   │   ├── App.css                   # Component styles
+│   │   ├── App.test.js               # Component tests
+│   │   ├── index.js                  # React entry point
+│   │   ├── index.css                 # Global styles
+│   │   ├── logo.svg                  # React logo
+│   │   ├── reportWebVitals.js        # Performance monitoring
+│   │   └── setupTests.js             # Test configuration
+│   │
+│   ├── package.json                  # Node dependencies & scripts
+│   ├── tailwind.config.js            # Tailwind CSS config
+│   ├── postcss.config.js             # PostCSS config
 │   └── README.md                     # Frontend documentation
 │
-├── docs/
-│   ├── ARCHITECTURE.md               # Architecture details
-│   ├── BANK_PATTERNS.md              # Parser patterns guide
-│   ├── API.md                        # API documentation
-│   └── CONTRIBUTING.md               # Contribution guide
-│
+├── ARCHITECTURE.md                  # Architecture details
+├── API.md                           # API documentation
+├── CONTRIBUTING.md                  # Contribution guide
+├── CONNECTION_CHECKLIST.md          # Backend/Frontend setup verification
+├── DEPLOYMENT.md                    # Deployment guide
+├── CHANGELOG.md                     # Version history
 ├── .gitignore
 ├── LICENSE
-└── README.md                         # This file
+└── README.md                        # This file
 ```
 
 ---
@@ -784,10 +803,8 @@ cat backend/.env | grep GEMINI_API_KEY
 # Try: gemini-pro or gemini-1.5-pro
 
 # 3. Test API key
-python backend/test_llm.py
-
-# 4. List available models
-python backend/list_models.py
+cd backend
+python test_llm.py
 ```
 
 #### Issue 3: "No Module Named 'app'"
@@ -1059,6 +1076,6 @@ If you find this project useful, please consider giving it a star!
 
 **Built with ❤️ for the fintech community**
 
-[Documentation](docs/) • [API Reference](docs/API.md) • [Contributing](CONTRIBUTING.md) • [Changelog](CHANGELOG.md)
+[API Reference](API.md) • [Architecture](ARCHITECTURE.md) • [Contributing](CONTRIBUTING.md) • [Changelog](CHANGELOG.md)
 
 </div>

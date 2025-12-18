@@ -330,7 +330,7 @@ Update `README.md` supported issuers table:
 | **New Bank** | ✅ Fully Supported | 95% | [Add notes] |
 ```
 
-Update `docs/BANK_PATTERNS.md` with New Bank patterns.
+(Optional) Create documentation for New Bank patterns in the parser file comments.
 
 #### Step 7: Test Your Parser
 
