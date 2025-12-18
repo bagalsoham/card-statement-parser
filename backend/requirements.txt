@@ -2,6 +2,7 @@ pdfplumber==0.10.4
 PyMuPDF==1.23.8
 
 fastapi==0.110.0
+fastapi-cors==0.0.6
 uvicorn==0.29.0
 
 pydantic==2.6.4

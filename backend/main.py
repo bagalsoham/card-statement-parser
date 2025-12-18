@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import tempfile
 import time
 from typing import Optional
@@ -28,6 +29,15 @@ app = FastAPI(
     title="Credit Card Statement Parser",
     description="AI-powered PDF statement parser with LLM fallback supporting 5 major issuers",
     version="2.0.0"
+)
+
+# Configure CORS to allow frontend communication
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://localhost:5173"],  # React dev servers
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Parser registry - All 5 issuers supported
